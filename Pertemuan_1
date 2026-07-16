@@ -1,0 +1,23 @@
+## Pertemuan 1: Data Exploration & Indexing ##
+library(palmerpenguins) # kita load dahulu data palmerpenguins dari library
+penguins
+dim(penguins) # Menunjukkan dimensi dari data penguins tadi
+str(penguins) # Memberikan informasi terkait tipe data tiap kolom
+head(penguins) # Menunjukkan ringkasan data pada beberapa baris pertama saja
+summary(penguins) # Memberikan ringkasan statistik dari tiap kolom data
+?factor
+# Mulai indexing #
+penguins[1:5,] # Baris 1 s.d 5 untuk semua kolom [baris, kolom]
+View(penguins)
+penguins[6:8,] # Baris 6 s.d 8 untuk semua kolom
+penguins[, 1:2] # Semua baris untuk kolom 1 s.d 2 saja
+penguins[, 6:8] # Semua baris untuk kolom 6 s.d 8 
+penguins[penguins$species == "Adelie",] # Jikalau ingin melihat keterangan penguin berjenis "Adelie" saja
+penguins[-1,] # Semua kecuali baris pertama
+penguins[,-6:-8] # Kecuali baris 6 s.d 8
+penguins[penguins$body_mass_g > 4000, c("species", "body_mass_g")]
+is.na(penguins$body_mass_g)
+which(is.na(penguins$body_mass_g))
+sum(is.na(penguins$species[penguins$body_mass_g > 4000]))
+tail(penguins[penguins$body_mass_g > 4000, ], 3)
+penguins[penguins$body_mass_g > 4000 & !is.na(penguins$body_mass_g), ]
